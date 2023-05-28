@@ -1,32 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <%= form_with model: @user do |f| %>
-      <h2>User info</h2>
-      
-      <% if @user.errors.any? %>
-        <%= @user.errors.count %> error prohibited this obj from being saved:
-        <ul>
-         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
+
+      <%= form_with model: @user, url: user_path(current_user.id) do |f| %>
+        <h2>User info</h2>
+
+        <% if @user.errors.any? %>
+          <%= @user.errors.count %> error prohibited this obj from being saved:
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
-        
-        <div class = "form-label mb-3">
-          <label for="book_title">Name</label>
-          <%= f.text_field :name, class: "form-control", style: "width:100" %>
+
+        <div class="form-label mb-3">
+          <h6>Name</h6>
+          <%= f.text_field :name, class: "form-control", style: "width:100", rows: "1" %>
         </div>
-        <div class = "form-label mb-3">
-          <label for="book_title">Image</label>
+        <div class="form-label mb-3">
+          <h6>Image</h6>
           <%= f.file_field :profile_image %>
         </div>
-        <div class = "form-label mb-3">
-          <label for="book_opinion">Introduction</label>
-          <%= f.text_area :introduction, class: "form-control", style: "width:100", %> 
+        <div class="form-label mb-3">
+          <h6>Introduction</h6>
+          <%= f.text_area :introduction, class: "form-control", style: "width:100", rows: "2" %>
         </div>
-          <%= f.submit "Update User",class: "btn btn-success" %>
-        <% end %>
+        <div class="button mb-3">
+          <%= f.submit 'Update User',class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

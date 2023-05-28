@@ -4,9 +4,10 @@
 
 <div class="container">
   <div class= "row">
+
     <div class= "col-md-3">
       <h2>User info</h2>
-      <table class="table">
+      <table class='table'>
         <%= image_tag @book.user.get_profile_image %>
         <tr>
           <td><strong>name</strong></td>
@@ -29,18 +30,18 @@
 
 
       <h2>New book</h2>
-      <%= form_with model: @book do |f| %>
-        <label for="book_title">Title</label>
+      <%= form_with model: @bookn do |f| %>
+        <h6>Title</h6>
         <%= f.text_field :title %>
-        <label for="book_opinion">Opinion</label>
+        <h6>Opinion</h6>
         <%= f.text_area :body %>
-        <%= f.submit "Create Book",class: "btn btn-success" %>
+        <%= f.submit 'Create Book',class: "btn btn-success" %>
       <% end %>
     </div>
 
     <div class= "col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <table class="table">
+      <table class='table'>
         <%= link_to user_path(@user.id) do %>
           <tr>
             <td> 
@@ -61,5 +62,6 @@
         <% end %>
       </table>
     </div>
+
   </div>
 </div>
